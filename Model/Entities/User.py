@@ -12,12 +12,10 @@ class User:
 
 class Admin(User):
     
-    def __init__(self, username="", password="", email="", name="", surname="", state=True) -> None:
+    def __init__(self, username="", password="", email="", name="", surname="", state=True, token="") -> None:
         super().__init__(username, password, email, name, surname, state)
+        self.token = token
         self.admin = True
         
     def __repr__(self) -> str:
         return f"Admin(username={self.username}, password={self.password}, email={self.email}, name={self.name}, surname={self.surname}, state={self.state})"
-    
-    def __str__(self) -> str:
-        return f"Admin: {self.name} {self.surname}"

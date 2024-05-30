@@ -2,7 +2,7 @@ from os import system
 from Controllers.AdminController import AdminController
 from Model.DTO.AdminForLogin import AdminForLogin
 
-class AdminMenu():
+class AdminView():
 
     def login(self):
         system("cls")
@@ -12,9 +12,11 @@ class AdminMenu():
         print("-" * 50)
         password = input("Ingrese la contraseña: ")
         print("-" * 50)
+        token = input("Ingrese el token seguro: ")
+        print("-" * 50)
         input(" Presione enter para continuar ".center(50, "!"))
         admin_controller = AdminController()
-        admin_for_login = AdminForLogin(username, password)
+        admin_for_login = AdminForLogin(username, password, token)
         validation = admin_controller.login(admin_for_login)
         return validation
         
@@ -31,10 +33,12 @@ class AdminMenu():
             option = input("Ingrese una opcion: ")
             if option == "1":
                 admin_controller = AdminController()
-                users = admin_controller.get_users()
-                for user in users:
-                    print(user)
-                input(" Presione enter para continuar ".center(50, "!"))
+                validation = self.login()
+                if validation[0]:
+                    users = admin_controller.get_users(admin)
+                    for user in users:
+                        print(user)
+                    input(" Presione enter para continuar ".center(50, "!"))
             elif option == "2":
                 admin_controller = AdminController()
                 validation = self.login()
@@ -43,7 +47,7 @@ class AdminMenu():
                     admin_controller.delete_forever(username)
                     input(" Presione enter para continuar ".center(50, "!"))
                 else:
-                    print(" Usuario o contraseña incorrecta ".center(50, "!"))
+                    print(" Usuario, contraseña o token incorrecto ".center(50, "!"))
                     input(" Presione enter para continuar ".center(50, "!"))
             elif option == "3":
                 admin_controller = AdminController()
@@ -55,7 +59,7 @@ class AdminMenu():
                     admin_controller.edit_credentials(username, new_username, new_password)
                     input(" Presione enter para continuar ".center(50, "!"))
                 else:
-                    print(" Usuario o contraseña incorrecta ".center(50, "!"))
+                    print(" Usuario, contraseña o token incorrecto ".center(50, "!"))
                     input(" Presione enter para continuar ".center(50, "!"))
             elif option == "4":
                 admin_controller = AdminController()
@@ -68,7 +72,7 @@ class AdminMenu():
                     admin_controller.edit_info(username, new_email, new_name, new_surname)
                     input(" Presione enter para continuar ".center(50, "!"))
                 else:
-                    print(" Usuario o contraseña incorrecta ".center(50, "!"))
+                    print(" Usuario, contraseña o token incorrecto ".center(50, "!"))
                     input(" Presione enter para continuar ".center(50, "!"))
             elif option == "5":
                 print(" Saliendo del menu de administrador ".center(50, "!"))

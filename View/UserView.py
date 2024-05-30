@@ -34,7 +34,6 @@ class UserView:
         print("-" * 50)
         password = input("Ingrese la contraseña: ")
         print("-" * 50)
-        input(" Presione enter para continuar ".center(50, "!"))
         user_controller = UserController()
         user_for_login = UserForLogin(username, password)
         validation = user_controller.login(user_for_login)

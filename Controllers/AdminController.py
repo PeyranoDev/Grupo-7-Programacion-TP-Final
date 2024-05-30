@@ -13,14 +13,14 @@ class AdminController(UserController):
         user_repository.delete_user(user)
         contact_repository.delete_contacts(user)
         
-    def login(self, user):
+    def login(self, admin):
         admin_repository = AdminRepository()
-        admin_from_repo = admin_repository.get_admin(user)
+        admin_from_repo = admin_repository.get_admin(admin)
         if admin_from_repo == None:
             return False, None
         else:
-            admin_validated = AdminForLogin(admin_from_repo.username, admin_from_repo.password)
-            if admin_from_repo.password == user.password:
+            admin_validated = AdminForLogin(admin_from_repo.username, admin_from_repo.password, admin_from_repo.token)
+            if admin_from_repo.password == admin.password and admin_from_repo.token == admin.token:
                 return True, admin_validated
             else:
                 return False, admin_validated   
