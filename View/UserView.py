@@ -55,14 +55,13 @@ class UserView:
         validation = self.login_menu()
         if validation[0]:
             selection = input("¿Está seguro que desea eliminar su usuario? (s/n): ")
-            if selection.lower() != "s":
-                input(" Presione enter para continuar ".center(50, "!"))
-                return
-            else:
+            if str(selection.lower()) == "s":
                 user = UserForDelete(validation[1].username)
                 user_controller = UserController()
                 user_controller.delete_user(user)
-            input(" Presione enter para continuar ".center(50, "!"))
+                print(" Usuario eliminado ".center(50, "!"))
+            else:
+                print(" Usuario no eliminado ".center(50, "!"))
         else:
             print(" Usuario o contraseña incorrecta ".center(50, "!"))
             input(" Presione enter para continuar ".center(50, "!"))

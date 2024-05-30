@@ -2,7 +2,7 @@
 2,Barbara,Gordon,batgirl@mail.com,user2,1
 3,Wally,West,kidflash@mail.com,user1,0
 4,Roy,Harper,arsenal@mail.com,user2,1
-5,Kara,Danvers,supergirl@mail.com,user1,0
+5,Kara,Danvers,supergirl@mail.com,user1,1
 6,Donna,Troy,wondergirl@mail.com,user2,1
 7,Jaime,Reyes,bluetscarab@mail.com,user2,1
 8,Kyle,Rayner,greenlantern@mail.com,user3,1
@@ -14,3 +14,4 @@
 14,Cassandra,Cain,orphan@mail.com,user7,1
 15,Kate,Bishop,hawkeye@mail.com,user7,1
 16,Riri,Williams,ironheart@mail.com,user7,1
+17,loco,loco,loquito@mail.com,user8,1

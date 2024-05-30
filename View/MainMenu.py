@@ -2,6 +2,7 @@ from os import system
 
 from .ContactView import ContactView
 from .UserView import UserView
+from .AdminView import AdminView
 
 
 class MainMenu:
@@ -14,7 +15,8 @@ class MainMenu:
             print("2. Registro de usuario")
             print("3. Listar Usuarios")
             print("4. Dar de baja usuario") # No implementado
-            print("5. Salir del programa") 
+            print("5. Login de administrador") # No implementado
+            print("6. Salir del programa") 
             print("-" * 50)
             option = input("Ingrese una opcion: ")
             if option == "1":
@@ -36,6 +38,13 @@ class MainMenu:
                 user_view = UserView()
                 validation = user_view.delete_user_menu()
             elif option == "5":
+                admin_view = AdminView()
+                validation = admin_view.login()
+                if validation[0] == True:
+                    admin = validation[1], validation[2]
+                    admin_view.menu(admin)
+            elif option == "6":
+                print(" Saliendo del programa ".center(50, "!"))
                 break
             else:
                 print(" Opcion incorrecta ".center(50, "!"))

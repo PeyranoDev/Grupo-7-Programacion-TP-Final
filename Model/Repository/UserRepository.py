@@ -1,6 +1,5 @@
 from ..Entities.User import User
 
-
 class UserRepository:
 
     def __init__(self):
@@ -60,3 +59,14 @@ class UserRepository:
                 if len(user_data) == 6 and user_data[0] == username:
                     user_data[5] = '0'
                 file.write(",".join(user_data) + "\n")
+                
+    def delete_user_forever(self, username):
+        lines = []
+        with open(self.file_path, "r") as file:
+            lines = file.readlines()
+        with open(self.file_path, "w") as file:
+            for row in lines:
+                user_data = row.strip().split(",")
+                if len(user_data) == 6 and user_data[0] != username:
+                    file.write(",".join(user_data) + "\n")
+

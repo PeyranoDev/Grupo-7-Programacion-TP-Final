@@ -23,10 +23,6 @@ class UserController:
             user_for_view = UserForView(user_from_repo)
             return user_for_view
 
-    def add_user(self, user):
-        user_repository = UserRepository()
-        user_repository.add_user(user)
-
     def login(self, user):
         user_repository = UserRepository()
         user_from_repo = user_repository.get_user(user)
@@ -37,11 +33,14 @@ class UserController:
             if user_from_repo.password == user.password:
                 return True, user_validated
             else:
-                return False, user_validated
-            
+                return False, user_validated     
+                
+    def add_user(self, user):
+        user_repository = UserRepository()
+        user_repository.add_user(user)
+        
     def delete_user(self, user):
         user_repository = UserRepository()
         contact_repository = ContactRepository()
         user_repository.deactivate_user(user.username)
         contact_repository.deactivate_contacts(user.username)
-            
