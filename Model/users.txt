@@ -1,0 +1,8 @@
+user1,user1,user1@mail.com,Steve,Rogers,0
+user2,user2,user2@mail.com,Bruce,Wayne,1
+user3,user3,user3@mail.com,Jean Luc,Pickard,1
+user4,user4,user4@mail.com,Bruce,Baner,1
+user5,user5,user5@mail.com,Clark,Kent,1
+user6,user6,user6@mail.com,Peter,Parker,1
+user7,user7,user7@mail.com,Diana,Prince,1
+
