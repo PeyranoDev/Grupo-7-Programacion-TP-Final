@@ -1,9 +1,7 @@
 from os import system
-
-from .ContactView import ContactView
-from .UserView import UserView
-from .AdminView import AdminView
-
+from View.ContactView import ContactView
+from View.UserView import UserView
+from View.AdminView import AdminView
 
 class MainMenu:
     # Esta clase se encarga de manejar el menu que ve el usuario antes de loguearse. 
@@ -15,14 +13,14 @@ class MainMenu:
             print("2. Registro de usuario")
             print("3. Listar Usuarios")
             print("4. Dar de baja usuario") # No implementado
-            print("5. Login de administrador") # No implementado
+            print("5. Login de administrador") # Implementado
             print("6. Salir del programa") 
             print("-" * 50)
             option = input("Ingrese una opcion: ")
             if option == "1":
                 user_view = UserView()
                 validation = user_view.login_menu()
-                if validation[0] == True:
+                if validation[0]:
                     user = validation[1]
                     ContactView(user).menu()
                 else:
@@ -40,8 +38,8 @@ class MainMenu:
             elif option == "5":
                 admin_view = AdminView()
                 validation = admin_view.login()
-                if validation[0] == True:
-                    admin = validation[1], validation[2]
+                if validation[0]:
+                    admin = validation[1]
                     admin_view.menu(admin)
             elif option == "6":
                 print(" Saliendo del programa ".center(50, "!"))
@@ -49,7 +47,6 @@ class MainMenu:
             else:
                 print(" Opcion incorrecta ".center(50, "!"))
                 input(" Presione enter para continuar ".center(50, "!"))
-
 
 if __name__ == "__main__":
     main_menu = MainMenu()
